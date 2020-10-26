@@ -11,6 +11,8 @@ const getCoordinates = (address, callBack) => {
             callBack("Sorry, Unable to connect to the network", undefined);
         } else if (res.body.features.length === 0) {
             callBack("Sorry, Unable to get data back", undefined);
+        } else if (res.body.features[0].place_name.includes("Israel")) {
+            callBack("Sorry, this country doesn't exist", undefined);
         }else {
             callBack(undefined, {
                 latitude: res.body.features[0].center[1],
